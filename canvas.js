@@ -40,15 +40,28 @@ ctx.stroke();
     }
     function draw(e) {
         if (!painting) return;
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 8;
         ctx.linecap = "round";
-        ctx.strokeStyle = "green";
+        ctx.strokeStyle = lineColor;
 
         ctx.lineTo(e.clientX, e.clientY);
         ctx.stroke();
         ctx.beginPath();
         ctx.moveTo(e.clientX, e.clientY);
     }
+
+//button to change color of drawing
+let lineColor = 'purple'; 
+
+function changeColor() {
+    const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    console.log('New color:', randomColor);
+    lineColor = randomColor;
+    console.log('lineColor:', lineColor);
+}
+
+// Event Listener for Button Click
+colorButton.addEventListener("click", changeColor);
 
     //EventListeners
     canvas.addEventListener("mousedown", startPosition);
